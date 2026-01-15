@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Senior Data Analyst — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#080808;--card:#111;--muted:#9aa0a6;--accent:#F5C542;--glass: rgba(255,255,255,0.03);
+      --radius:12px; --container:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;color:#EDEDED;background:var(--bg);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--container);margin:0 auto;padding:40px 20px}
+
+    /* Hero */
+    header.hero{display:flex;gap:32px;align-items:center;justify-content:space-between;padding:48px 0}
+    .hero-left{max-width:58%}
+    .eyebrow{letter-spacing:.28em;color:var(--accent);font-weight:700}
+    h1{font-size:48px;margin:14px 0 8px;line-height:1.02}
+    p.lead{color:var(--muted);font-size:18px;max-width:60%}
+    .cta-row{margin-top:22px;display:flex;gap:14px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:12px 18px;border-radius:999px;color:#fff;cursor:pointer;transition:all .2s ease;font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#ffb84d);color:#111;border:none;box-shadow:0 12px 40px rgba(245,197,66,0.12)}
+    .hero-right{width:38%;display:flex;justify-content:center}
+    .profile{width:320px;height:420px;border-radius:18px;background-image:url('images/about-me.png');background-size:cover;background-position:center;box-shadow: 0 30px 60px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.04)}
+
+    /* Impact counter */
+    .counters{display:flex;gap:18px;margin-top:18px;align-items:baseline}
+    .counter{background:var(--glass);padding:12px 18px;border-radius:10px}
+    .counter .num{font-weight:800;color:var(--accent);font-size:20px}
+    .counter .lbl{color:var(--muted);font-size:13px}
+
+    /* Dashboard */
+    section.grid{padding:60px 0}
+    .filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+    .filter{background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:999px;color:var(--muted);cursor:pointer;border:1px solid transparent}
+    .filter.active{background:linear-gradient(90deg,var(--accent),#ffb84d);color:#111;border-color:rgba(245,197,66,0.14)}
+    .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .28s cubic-bezier(.2,.9,.2,1),box-shadow .28s ease}
+    .card:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(0,0,0,0.6)}
+    .card h3{margin:0 0 6px}
+    .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .badge{background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;font-size:12px;color:var(--muted)}
+    .result{margin-top:8px;color:#d9e1e6}
+    .result b{color:var(--accent)}
+    .card .actions{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+
+    /* Skills (radar canvas + bars) */
+    .skills{display:flex;gap:22px;align-items:center}
+    .radar-wrap{width:360px;height:360px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border-radius:12px;padding:12px}
+    .bars{flex:1}
+    .skill-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .skill-row .label{width:140px;color:var(--muted)}
+    .skill-row .bar{flex:1;height:12px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden}
+    .skill-row .fill{height:100%;background:linear-gradient(90deg,var(--accent),#ffb84d);width:0;transition:width 1.4s ease}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .quote{background:var(--glass);padding:20px;border-radius:12px}
+
+    /* Philosophy */
+    .philosophy{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:24px;border-radius:12px}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:32px}
+    .modal.show{display:flex}
+    .modal-card{background:var(--card);padding:22px;border-radius:12px;max-width:900px;width:100%}
+
+    /* responsive */
+    @media(max-width:1000px){.projects{grid-template-columns:repeat(2,1fr)}.hero-left{max-width:60%}.hero-right{display:none}.radar-wrap{width:260px;height:260px}}
+    @media(max-width:700px){.projects{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.hero-left{max-width:100%}p.lead{max-width:100%}}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+    footer{padding:40px 0;color:var(--muted)}
+
+    /* fade-in on scroll */
+    .fade{opacity:0;transform:translateY(12px);transition:all .6s ease}
+    .fade.in{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">SENIOR DATA ANALYST</div>
+        <h1>Turning data into decisions — measurable impact, fast.</h1>
+        <p class="lead">I help teams turn fragmented datasets into reliable insights and dashboards that drive decisions, optimize spend, and increase ROI.</p>
+
+        <div class="counters">
+          <div class="counter">
+            <div class="num" data-target="5000000">$0</div>
+            <div class="lbl">Ad Spend Optimized</div>
+          </div>
+          <div class="counter">
+            <div class="num" data-target="30">0</div>
+            <div class="lbl">Projects (select highlights)</div>
+          </div>
+          <div class="counter">
+            <div class="num" data-target="60">0</div>
+            <div class="lbl">Hours Saved / week</div>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Schedule Call</a>
+          <a class="btn" href="#projects">See Impact</a>
+          <a class="btn" href="resume.pdf" download>Download PDF</a>
+          <a class="btn" href="https://github.com" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="profile" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <main>
+      <section id="projects" class="grid fade">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <h2>Impact Dashboard</h2>
+          <div class="muted">Filter by methodology &amp; domain</div>
+        </div>
+
+        <div class="filters" id="filters"></div>
+        <div class="projects" id="projectsGrid"></div>
+        <div style="margin-top:18px;text-align:center"><button id="loadMore" class="btn">Load more</button></div>
+      </section>
+
+      <section id="skills" class="fade" style="padding:40px 0">
+        <h2>Skills & Proficiency</h2>
+        <div class="skills" style="margin-top:14px">
+          <div class="radar-wrap"><canvas id="radar" width="320" height="320"></canvas></div>
+          <div class="bars">
+            <!-- bars injected by JS -->
+            <div id="skillBars"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="fade" style="padding:40px 0">
+        <h2>Client Testimonials</h2>
+        <div class="testimonials" style="margin-top:16px">
+          <div class="quote">"Their dashboard reduced reporting time by 70%" — Head of Analytics, Retail</div>
+          <div class="quote">"Achieved a 20% lift in conversions after model implementation" — Marketing Lead</div>
+          <div class="quote">"Actionable insights that led to $2M in incremental revenue" — COO</div>
+        </div>
+      </section>
+
+      <section id="philosophy" class="fade" style="padding:40px 0">
+        <h2>My Data Philosophy</h2>
+        <div class="philosophy" style="margin-top:12px">
+          I deliver business-focused analytics: clear problem scoping, reproducible data pipelines, human-first dashboards, and measurable experiments. Insights must be actionable and tracked — not just pretty charts.
+        </div>
+      </section>
+
+      <section id="contact" class="fade" style="padding:40px 0">
+        <h2>Get in touch</h2>
+        <p style="margin-top:12px">Interested in a project or a quick audit? <a href="mailto:you@example.com" class="btn">Email me</a></p>
+      </section>
+    </main>
+
+    <footer class="center muted">© <span id="year"></span> — Senior Data Analyst Portfolio</footer>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-card">
+      <div id="modalContent"></div>
+      <div style="text-align:right;margin-top:10px"><button id="closeModal" class="btn">Close</button></div>
+    </div>
+  </div>
+
+  <script>
+    // Basic utilities & data
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // COUNTERS animation
+    document.querySelectorAll('.num').forEach(el=>{
+      const target = +el.dataset.target;
+      let curr=0; const step = Math.max(1, Math.floor(target/120));
+      const fmt = (v)=> v>=1000 ? ('$'+(v/1000000).toFixed(1)+'M') : v;
+      const t = setInterval(()=>{
+        curr += step;
+        if(curr>=target){curr=target; clearInterval(t);} 
+        el.textContent = target>=1000 ? fmt(curr) : curr;
+      },14);
+    });
+
+    // PROJECT DATA (30 items sample)
+    const TAGS = ['Machine Learning','A/B Testing','Dashboard','ETL','Forecasting','SQL','DAX','Experimentation','Marketing','Ops'];
+    const projects = [];
+    for(let i=1;i<=30;i++){
+      const t = [TAGS[i%TAGS.length]];
+      if(i%3===0) t.push('Dashboard');
+      if(i%5===0) t.push('Forecasting');
+      projects.push({
+        id:i,
+        title:`Project ${i}: Conversion Optimization`,
+        challenge:`Low conversion and poor attribution`,
+        action:`Built attribution model + dashboard to reallocate budget`,
+        result:`${10 + (i%15)}% improvement in conversion, <b>${(i%7)+85}% accuracy</b> in model`,
+        tags:t,
+        case:`Detailed case study for project ${i} — challenge, approach, results, and code snippets.`
+      });
+    }
+
+    // RENDER FILTERS
+    const filtersEl = document.getElementById('filters');
+    const allTags = Array.from(new Set(projects.flatMap(p=>p.tags)));
+    const active = new Set();
+    function renderFilters(){
+      filtersEl.innerHTML='';
+      const any = document.createElement('div'); any.className='filter'; any.textContent='All';
+      any.onclick=()=>{active.clear(); renderFilters(); renderProjects();};
+      filtersEl.appendChild(any);
+      allTags.forEach(t=>{
+        const el=document.createElement('div');el.className='filter';el.textContent=t;
+        if(active.has(t)){el.classList.add('active')}
+        el.onclick=()=>{ if(active.has(t)) active.delete(t); else active.add(t); renderFilters(); renderProjects(); };
+        filtersEl.appendChild(el);
+      })
+    }
+
+    // RENDER PROJECTS
+    const grid = document.getElementById('projectsGrid');
+    let shown=9;
+    function renderProjects(){
+      grid.innerHTML='';
+      const filtered = projects.filter(p=>{ if(active.size===0) return true; return [...active].every(a=>p.tags.includes(a)); });
+      filtered.slice(0,shown).forEach(p=>{
+        const c = document.createElement('article'); c.className='card fade';
+        c.innerHTML = `<h3>${p.title}</h3><div class="meta">${p.challenge}</div><div class="muted">My action: ${p.action}</div><div class="result">Result: ${p.result}</div><div class="badges">${p.tags.map(x=>'<span class="badge">'+x+'</span>').join('')}</div><div class="actions"><button class="btn" data-id="${p.id}">View Case Study</button><div class="muted">#${p.id}</div></div>`;
+        grid.appendChild(c);
+      });
+      // fade reveal
+      setTimeout(()=>document.querySelectorAll('.fade').forEach(el=>el.classList.add('in')),60);
+    }
+
+    document.getElementById('loadMore').onclick=()=>{ shown+=9; renderProjects(); }
+
+    // modal for case studies
+    const modal = document.getElementById('modal'); const modalContent = document.getElementById('modalContent');
+    document.body.addEventListener('click',e=>{
+      const btn = e.target.closest('button[data-id]');
+      if(btn){ const id=+btn.dataset.id; const p = projects.find(x=>x.id===id); if(p){ modalContent.innerHTML = `<h3>${p.title}</h3><p class="muted">${p.challenge}</p><h4>What I did</h4><p>${p.action}</p><h4>Results</h4><p>${p.result}</p><h4>Details</h4><p>${p.case}</p>`; modal.classList.add('show'); modal.setAttribute('aria-hidden','false'); }}
+    });
+    document.getElementById('closeModal').onclick=()=>{ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }
+    modal.addEventListener('click',e=>{ if(e.target===modal) { modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }});
+
+    // Render filters + projects
+    renderFilters(); renderProjects();
+
+    // Skills: radar and bars
+    const skills = [
+      {k:'SQL',v:95},{k:'Power BI',v:92},{k:'DAX',v:88},{k:'Experimentation',v:85},{k:'Python',v:72},{k:'Data Modeling',v:90}
+    ];
+    // bars
+    const barsEl = document.getElementById('skillBars');
+    skills.forEach(s=>{
+      const r = document.createElement('div'); r.className='skill-row';
+      r.innerHTML = `<div class="label">${s.k}</div><div class="bar"><div class="fill" style="width:0%"></div></div><div style="width:60px;text-align:right;color:var(--muted);">${s.v}%</div>`;
+      barsEl.appendChild(r);
+    });
+    // animate fills when in view
+    const skillObserver = new IntersectionObserver((entries,obs)=>{ entries.forEach(en=>{ if(en.isIntersecting){ document.querySelectorAll('.fill').forEach((el,i)=>{el.style.width=skills[i].v+'%'}); obs.unobserve(en.target); }}); },{threshold:0.2});
+    skillObserver.observe(document.getElementById('skills'));
+
+    // Radar chart (simple polygon)
+    (function drawRadar(){
+      const c = document.getElementById('radar'); if(!c) return; const ctx=c.getContext('2d'); const W=c.width, H=c.height; ctx.translate(W/2,H/2);
+      const R = Math.min(W,H)/2 - 28; const N = skills.length;
+      // grid
+      ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1;
+      for(let r=0;r<=4;r++){
+        ctx.beginPath(); const rr=R*(r+1)/5;
+        for(let i=0;i<N;i++){ const a = (Math.PI*2*i)/N - Math.PI/2; const x=Math.cos(a)*rr, y=Math.sin(a)*rr; if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); }
+        ctx.closePath(); ctx.stroke();
+      }
+      // labels
+      ctx.fillStyle='rgba(255,255,255,0.7)'; ctx.font='12px Inter';
+      for(let i=0;i<N;i++){ const a=(Math.PI*2*i)/N - Math.PI/2; const x=Math.cos(a)*(R+12), y=Math.sin(a)*(R+12); ctx.fillText(skills[i].k, x-10, y+4); }
+      // data polygon
+      ctx.beginPath(); for(let i=0;i<N;i++){ const v=skills[i].v/100; const a=(Math.PI*2*i)/N - Math.PI/2; const x=Math.cos(a)*R*v, y=Math.sin(a)*R*v; if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y); }
+      ctx.closePath(); ctx.fillStyle='rgba(245,197,66,0.12)'; ctx.fill(); ctx.strokeStyle='rgba(245,197,66,0.6)'; ctx.lineWidth=2; ctx.stroke();
+    })();
+
+    // Smooth scroll for CTAs
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',e=>{ e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); }); });
+
+    // Fade-in on scroll
+    const fader = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); }); },{threshold:0.12});
+    document.querySelectorAll('.fade').forEach(el=>fader.observe(el));
+
+  </script>
+</body>
+</html>

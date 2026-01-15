@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<title>syed jasim</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+	<script>
+	// Reveal animation for resume cards
+	(function(){
+		const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const items = document.querySelectorAll('.resume-wrap');
+		if (!items.length) return;
+		if (prefersReduced) { items.forEach(i=>i.classList.add('in-view')); return; }
+		const obs = new IntersectionObserver((entries, o) => {
+			entries.forEach(e => {
+				if (e.isIntersecting) { e.target.classList.add('in-view'); o.unobserve(e.target); }
+			});
+		}, { threshold: 0.28 });
+		items.forEach(i=>obs.observe(i));
+	})();
+	</script>
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+<style>
+
+/*======================================
+//--//-->   ABOUT
+======================================*/
+
+.about-mf .box-shadow-full {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.about-mf .about-img {
+  margin-bottom: 2rem;
+}
+
+.about-mf .about-img img {
+  margin-left: 10px;
+}
+
+
+.skill-mf .progress {
+  /* background-color: #cde1f8; */
+  margin: .5rem 0 1.2rem 0;
+  border-radius: 0;
+  height: .7rem;
+}
+
+.skill-mf .progress .progress-bar {
+  height: .7rem;
+	background-color: #F5C542; /* primary highlight */
+	width: 0; /* start at 0, will animate to data-percentage */
+	transition: width 1.5s ease-in-out, transform .25s ease, filter .25s ease;
+	will-change: width, transform;
+}
+
+/* Hover: subtle scale and brightness for premium feel */
+.skill-mf .progress .progress-bar:hover {
+	transform: scaleY(1.04) translateZ(0);
+	filter: brightness(1.06);
+}
+
+/* Dark theme text colors for About/Skills */
+.heading-section h2, .heading-section .big, .about-section h2, .about-section .big { color: #EDEDED; }
+.about-text, .about-info span, .resume-wrap, .text, .skill-mf { color: #B3B3B3; }
+.skill-mf .title-s, .about-info .title-s { color: #EDEDED; opacity:0.95; }
+.skill-label { color: #EADFA6; /* light yellow/gray tone */ font-weight:600; }
+
+
+/* Typing animation (JS-driven) */
+#typing-animation { position: relative; font-size: 22px; font-weight:600; color: #fff; white-space: nowrap; }
+
+/* project image zoom effect */
+
+.zoom-effect {
+  overflow: hidden;
+  transition: transform 0.3s ease-out;
+}
+
+.zoom-effect:hover {
+  transform: scale(1.1);
+}
+
+/* Preserve About text formatting as written (line breaks) */
+.about-text {
+	white-space: pre-wrap;
+	line-height: 1.5;
+}
+
+/* Icon & CTA animations (professional UI/UX feel) */
+.icon-animate { display:inline-flex; align-items:center; justify-content:center; transition: transform .32s cubic-bezier(.2,.9,.2,1), box-shadow .32s ease; }
+.icon-animate .icon, .ftco-footer-social li a span { display:inline-block; transition: transform .32s ease, color .32s ease, filter .32s ease; }
+.icon-animate:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+.icon-animate:hover .icon { transform: scale(1.12) rotate(-6deg); color: #ffbd39; filter: drop-shadow(0 6px 18px rgba(255,189,57,0.12)); }
+
+/* Contact box hover */
+.align-self-stretch.box.p-4 { transition: transform .32s cubic-bezier(.2,.9,.2,1), box-shadow .32s ease; }
+.align-self-stretch.box.p-4:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,0.22); }
+
+/* Social icons */
+.ftco-footer-social li a span { transition: transform .36s ease, color .36s ease; }
+.ftco-footer-social li a:hover span { transform: translateY(-6px) rotate(-12deg); color: #ffbd39; }
+
+/* CTA (My works) standout animation */
+.cta-animate { position:relative; display:inline-flex; align-items:center; gap:8px; overflow:visible; transition: transform .22s ease, box-shadow .22s ease; }
+.cta-animate .cta-arrow { display:inline-block; transform: translateX(0); transition: transform .28s cubic-bezier(.2,.9,.2,1), text-shadow .4s ease; font-weight:700; }
+.cta-animate:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(255,189,57,0.12); }
+.cta-animate:hover .cta-arrow { transform: translateX(8px); animation: cta-glow 1.2s infinite; }
+@keyframes cta-glow { 0% { text-shadow:0 0 0 rgba(255,189,57,0);} 50% { text-shadow:0 0 12px rgba(255,189,57,0.95);} 100% { text-shadow:0 0 0 rgba(255,189,57,0);} }
+
+/* Lift CTA slightly on larger screens so it sits higher in the hero */
+@media (min-width: 992px) {
+	#home-section .cta-animate { transform: translateY(-28px); }
+	#home-section .cta-animate:hover { transform: translateY(-34px); box-shadow: 0 28px 50px rgba(255,189,57,0.14); }
+}
+
+/* Accessibility: reduce motion respects user preference */
+@media (prefers-reduced-motion: reduce) {
+  .icon-animate, .cta-animate, .align-self-stretch.box.p-4, .ftco-footer-social li a span { transition: none !important; animation: none !important; transform: none !important; }
+}
+
+</style>
+
+<style>
+/* Navbar: lighter link backgrounds and smooth hover animations */
+.ftco_navbar { background: transparent !important; }
+.site-navbar-target .nav-link { background: rgba(255,255,255,0.02); color: rgba(255,255,255,0.95); padding: .45rem .6rem; border-radius: 8px; transition: background .22s ease, transform .18s cubic-bezier(.2,.9,.2,1), color .22s ease; font-weight:600; }
+.site-navbar-target .nav-link:hover, .site-navbar-target .nav-link:focus { background: rgba(255,255,255,0.06); color: #ffbd39; transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.16); }
+.site-navbar-target .nav-link::after { content: ""; display:block; height:2px; background: #ffbd39; width:0; transition: width .26s ease; margin-top:6px; border-radius:2px; }
+.site-navbar-target .nav-link:hover::after { width:100%; }
+
+/* Slightly subtle active state for current nav item */
+.site-navbar-target .nav-item.active > .nav-link { background: rgba(255,189,57,0.08); color:#ffbd39; }
+
+/* Mobile/toggler tweaks */
+.navbar-toggler { border: 1px solid rgba(255,255,255,0.06); transition: transform .18s ease; }
+.navbar-toggler:active, .navbar-toggler:hover { transform: translateY(-3px); }
+
+@media (max-width: 768px) {
+	.site-navbar-target .nav-link { padding: .6rem .9rem; }
+}
+
+<!-- Resume & page animations -->
+<style>
+/* Card zoom for resume sections */
+.resume-wrap { transition: transform .36s cubic-bezier(.2,.9,.2,1), box-shadow .36s ease, background-color .28s ease; will-change: transform; }
+.resume-wrap:hover { transform: scale(1.02); box-shadow: 0 28px 60px rgba(0,0,0,0.38); background-color: rgba(255,255,255,0.02); }
+
+/* Subtle reveal animation for resume cards */
+.resume-wrap { position: relative; transform: translateY(8px); opacity: 0; transition: transform .6s cubic-bezier(.2,.9,.2,1), opacity .6s ease, box-shadow .4s ease; }
+.resume-wrap.in-view { transform: translateY(0); opacity: 1; box-shadow: 0 40px 80px rgba(0,0,0,0.45); }
+.resume-wrap .date { display:inline-block; background: linear-gradient(90deg, #F5C542, #ffb84d); color:#111; padding:6px 10px; border-radius:6px; font-weight:800; opacity:0; transform: translateY(-8px); transition: transform .48s ease, opacity .48s ease; }
+.resume-wrap.in-view .date { opacity:1; transform: translateY(0); animation: date-pop .6s cubic-bezier(.2,.9,.2,1); }
+@keyframes date-pop { 0%{transform:translateY(-8px) scale(.96)} 60%{transform:translateY(6px) scale(1.06)} 100%{transform:translateY(0) scale(1)} }
+
+/* small shine across card when revealed */
+.resume-wrap.in-view::after { content: ''; position: absolute; left:-40%; top:-10%; width:40%; height:120%; background: linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.08), rgba(255,255,255,0.02)); transform: skewX(-20deg) translateX(-120%); animation: shine 1.2s ease forwards; pointer-events:none; }
+@keyframes shine { to { transform: skewX(-20deg) translateX(220%); opacity:0; } }
+
+@media (prefers-reduced-motion: reduce) {
+	.resume-wrap, .resume-wrap::after, .resume-wrap .date { transition: none !important; animation: none !important; }
+}
+
+/* Typing header caret */
+#type-title { color: #EDEDED; font-weight:700; padding-right:4px; white-space:nowrap; }
+@keyframes blink-caret { 50% { border-color: transparent; } }
+#type-title.blink { animation: blink-caret .8s steps(1) infinite; }
+
+/* Download CV button hover (bounce + color) */
+.download-cv { transition: transform .22s cubic-bezier(.2,.9,.2,1), background-color .18s ease, box-shadow .18s ease; }
+.download-cv:hover { transform: translateY(-8px); background-color: #F5C542; color: #111; box-shadow: 0 18px 40px rgba(245,197,66,0.14); animation: download-bounce .6s; }
+@keyframes download-bounce { 0% { transform: translateY(0);} 40% { transform: translateY(-10px);} 60% { transform: translateY(-6px);} 100% { transform: translateY(-8px);} }
+
+/* Page load: fade-in sections sequentially */
+.section-fade { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.9,.2,1); }
+.section-fade.visible { opacity: 1; transform: translateY(0); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .resume-wrap, .download-cv, #type-title, .section-fade { transition: none !important; animation: none !important; }
+  .section-fade { opacity:1; transform:none; }
+
+}
+</style>
+
+<style>
+/* About section soft lights & gentle zoom animation */
+.about-anim { position: relative; overflow: hidden; z-index: 0; }
+.about-anim.in-view { animation: gentleScale 6s ease-in-out infinite; }
+@keyframes gentleScale { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
+.about-anim::before,
+.about-anim::after {
+	content: "";
+	position: absolute;
+	pointer-events: none;
+	filter: blur(40px);
+	opacity: 0;
+	transition: opacity .6s ease;
+	z-index: -1;
+}
+.about-anim::before {
+	width: 360px; height: 360px;
+	background: radial-gradient(circle at 30% 30%, rgba(245,197,66,0.14), transparent 40%);
+	left: -6%; top: 6%; transform: translate3d(0,0,0);
+}
+.about-anim::after {
+	width: 460px; height: 460px;
+	background: radial-gradient(circle at 70% 70%, rgba(255,255,255,0.06), transparent 30%);
+	right: -6%; bottom: 6%; transform: translate3d(0,0,0);
+}
+.about-anim.in-view::before { animation: floatLight1 7s ease-in-out infinite; opacity: 1; }
+.about-anim.in-view::after  { animation: floatLight2 9s ease-in-out infinite; opacity: 1; }
+@keyframes floatLight1 { 0%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,20px) scale(1.08)} 100%{transform:translate(0,0) scale(1)} }
+@keyframes floatLight2 { 0%{transform:translate(0,0) scale(1)} 50%{transform:translate(-40px,-30px) scale(0.94)} 100%{transform:translate(0,0) scale(1)} }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	.about-anim.in-view, .about-anim::before, .about-anim::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+	</head>
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+	  
+	  
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">SYED JASIM</a>
+	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav nav ml-auto">
+	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
+	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
+	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+	  <section id="home-section" class="hero">
+		  <div class="home-slider  owl-carousel">
+	       <div class="slider-item ">
+	      	<div class="overlay"></div>
+	         <div class="container">
+	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
+	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/bg_1png.jpg);">
+	           	 <div class="overlay"></div>
+	           	</div>
+		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+		          	<div class="text">
+		          		<span class="subheading">Hello!</span>
+                            <h1 class="mb-4 mt-3">I'm <span>SYED JASIM ALI</span></h1>
+
+					<!-- Element to contain animated typing -->
+					<span id="typing-animation"><span class="typing-content"></span></span>
+
+					<script>
+					// Robust typing loop (type, pause, delete, next) for the rotating words
+					(function(){
+					const el = document.querySelector('#typing-animation .typing-content');
+					if (!el) return;
+					  const words = ['Engineer', 'Creator', 'Teacher'];
+					  const typeSpeed = 80; // ms per char
+					  const deleteSpeed = 40;
+					  const pauseAfterType = 900;
+					  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+					if (prefersReduced) { el.textContent = words[0]; return; }
+
+					  let wordIndex = 0, charIndex = 0, deleting = false;
+
+					  function tick(){
+					    const current = words[wordIndex];
+					    if (!deleting) {
+					      el.textContent = current.slice(0, charIndex + 1);
+					      charIndex++;
+					      if (charIndex === current.length) {
+					        deleting = true;
+					        setTimeout(tick, pauseAfterType);
+					        return;
+					      }
+					      setTimeout(tick, typeSpeed);
+					    } else {
+					      el.textContent = current.slice(0, charIndex - 1);
+					      charIndex--;
+					      if (charIndex === 0) {
+					        deleting = false;
+					        wordIndex = (wordIndex + 1) % words.length;
+					        setTimeout(tick, typeSpeed);
+					        return;
+					      }
+					      setTimeout(tick, deleteSpeed);
+					    }
+					  }
+					  // start
+					  tick();
+					})();
+					</script>
+                            
+                        		<br>
+                        		<br>
+							<h2><span id="type-title" aria-label="A Senior Data Analyst"></span></h2>
+                        		<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
+                        		<!-- <br> -->
+                        		<!-- YouTube link (commented out) -->
+                            		<p><a href="https://github.com/syedjasim-analytics" class="btn btn-white btn-outline-white py-3 px-4 cta-animate">My works <span class="cta-arrow">→</span></a></p>
+		            </div>
+		          </div>
+	        	</div>
+	        </div>
+	      </div>
+		</div>
+    </section>
+
+
+
+    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
+    	<div class="container">
+			<div class="row">
+				<div class="row d-flex align-items-stretch">
+				<!-- <div class="row d-flex"> -->
+					<div class="col-md-6 col-lg-5 d-flex">
+						<div class="img-about img d-flex align-items-stretch">
+							<div class="overlay">
+								<div class="row">
+									<div class="col-sm-6 col-md-5">
+									  <div class="about-img">
+										<img src="images/about-me.png" class="img-fluid rounded b-shadow-a" alt="">
+									  </div>
+									</div>
+									<!-- Details next to profile image -->
+									<div class="col-sm-6 col-md-7">
+									  <div class="about-info">
+										<p><span class="title-s">Name: </span> <span>syed jasim</span></p>
+										<p><span class="title-s">Job Role: </span> <span>Senior Data Analyst</span></p>
+										<p><span class="title-s">Experience: </span> <span> 2 Years </span></p>
+										<p><span class="title-s">Address: </span> <span>karachi,pakistan</span></p>
+									  </div>
+									</div>
+								  </div>
+
+								<div class="skill-mf">
+									<p class="title-s">Skills</p>
+									<span class="skill-label">SQL</span> <span class="pull-right">95%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 0;" data-percentage="95" aria-valuenow="0" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+					
+									<span class="skill-label">DAX</span> <span class="pull-right">85%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 0;" data-percentage="85" aria-valuenow="0" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+					
+									<span class="skill-label">Data Visualization</span> <span class="pull-right">90%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 0;" data-percentage="90" aria-valuenow="0" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+					
+									<span class="skill-label">Statistical Analysis</span> <span class="pull-right">85%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 0;" data-percentage="85" aria-valuenow="0" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+					
+									<span class="skill-label">Dashboard creation</span> <span class="pull-right">80%</span>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar" style="width: 0;" data-percentage="80" aria-valuenow="0" aria-valuemin="0"
+											aria-valuemax="100"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
+						<div class="row justify-content-start pb-3">
+							<div class="col-md-12 heading-section ftco-animate">
+								
+								<h1 class="big">About</h1>
+								<h2 class="mb-4">About Me</h2>
+								
+								<div class="about-text about-anim">Good analysis means nothing if decision-makers can’t see it clearly.
+I’m a Data Analyst who turns business data into clear Power BI dashboards.
+
+I specialize in Power BI dashboard development and Excel automation, transforming raw data into interactive visual insights that track KPIs, monitor performance, and drive confident decisions—turning data from a challenge into your advantage.
+
+🛠️ WHAT I DO BEST
+
+>Power BI dashboards & interactive reports
+>Excel automation & dynamic reporting
+>SQL data analysis & data modeling
+>KPI tracking & business intelligence
+>Sales, HR & operational analytics
+
+📈 SPECIALIZED IN
+
+>Sales Performance Dashboards – Track revenue, conversions, growth trends
+>HR & People Analytics – Attendance, productivity, workforce insights
+>Operational Efficiency Reports – Process tracking, cost analysis, optimization
+>Financial Data Visualization – P&L, cash flow, budget vs actuals
+>Automated Reporting Systems – Self-updating Excel/BI reports
+
+✅ WHY CLIENTS CHOOSE & RETURN
+
+>Certified in Excel AI & Power BI – Using the latest smart tools
+>Focus on your ROI – Dashboards that drive decisions, not just display data
+>Clear communication & business understanding
+>Insights, not just charts – Actionable recommendations
+>Clean, professional, deadline-driven delivery
+
+🚀 TYPICAL PROJECT IMPACT
+
+Before: Manual reporting, scattered data, delayed insights
+After: Single Power BI dashboard, real-time tracking, faster decisions
+Result: 60–80% time saved on reporting, clearer team alignment, data-driven strategy
+
+My goal is simple: to help you understand your data and grow your business through clear, actionable dashboards. If you're looking for a detail-oriented analyst who delivers real results, let's connect.
+
+                                     📬 Ready to turn your data into decisions?
+                                                                Send me a message →.</div>
+								<ul class="about-info mt-4 px-md-0 px-2">
+									<li class="d-flex"><span>Profile:</span> <span>Data Science &amp; Analytics</span></li>
+									<li class="d-flex"><span>Domain:</span> <span>Retail, Ecommerce, BFSI &amp; Digital Marketing</span></li>
+									<li class="d-flex"><span>Education:</span> <span>Assocaite Engineering</span></li>
+									<li class="d-flex"><span>Language:</span> <span>English,urdu,Hindi</span></li>
+									<li class="d-flex"><span>BI Tools:</span> <span>Microsoft Power BI Microsoft excel, Looker &amp; Tableau</span></li>
+									<li class="d-flex"><span>Other Skills:</span> <span>Cloud, PySpark, Excel, Git, JIRA, Google Analytics &amp; SEO</span></li>
+									<li class="d-flex"><span>Interest:</span> <span>Traveling, Travel Photography, Teaching</span></li>
+									
+								</ul>
+							</div>
+						</div>
+
+
+						<div class="counter-wrap ftco-animate d-flex mt-md-3">
+							<div class="text">
+								<p class="mb-4">
+									<span class="number" data-number="30">0</span> <span>+</span>
+									<span>&nbsp; Projects completed</span>
+								</p>
+								<p><a href="https://www.linkedin.com/in/syed-jasim-20088338a/" class="btn btn-primary py-3 px-3">LinkedIn</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </section>
+
+
+
+	
+    <section class="ftco-section ftco-no-pb" id="resume-section">
+    	<div class="container">
+    		<div class="row justify-content-center pb-5">
+          <div class="col-md-10 heading-section text-center ftco-animate">
+          	<h1 class="big big-2">Resume</h1>
+            <h2 class="mb-4">Resume</h2>
+            <p>Senior Data Analyst with 2+ years of hands-on experience delivering data-driven insights through advanced data modeling, cleaning, and visualization. Specialized in creating high-impact Power BI dashboards and transforming complex datasets into meaningful business stories. Strong analytical mindset with a focus on performance tracking, trend analysis, and strategic decision support.</p>
+          </div>
+        </div>
+
+		<div class="row">
+			<h1 class="big-4">Experience</h1>
+			<div class="underline"></div>
+		</div>
+		<br>
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-6 mx-auto">
+				<div class="resume-wrap ftco-animate">
+					<span class="date">2023-2026</span>
+					<h2>Senior Data Analyst</h2>
+					<span class="position">Freelance Data Analyst</span>
+					<p class="mt-4">
+						<ul>
+							<li>Built an interactive sales performance dashboard tracking revenue, conversions, and customer behavior</li>
+							<li>Automated weekly reporting, saving 15+ hours/month in manual work</li>
+							<li>Performed in-depth market research and analysis to create online pages. Resulted in ~100% website growth and 30% increase in conversion rate YoY.</li>
+							<li>Delivered multiple training and mentorship sessions on analytical tools like SQL, MS Excel, Power BI, Tableau, DAX</li>
+							<li>Performed migration and enhancements for merchandising dashboard, involved data integration and its feature improvement.</li>
+						</ul>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<h1 class="big-4">Education</h1>
+			<div class="underline"></div>
+		</div>
+		<br>
+		
+			<div class="row">
+    			<div class="col-md-6">
+    				<div class="resume-wrap ftco-animate">
+    					<span class="date">2023-2026</span>
+    					<h2>assocaite Engineering</h2>
+    					<span class="position">memon industrial institute</span>
+    					<p class="mt-4">Grade: First class distinction.</p>
+    				</div>
+    			</div>
+
+    			<div class="col-md-6">
+    				<div class="resume-wrap ftco-animate">
+    					<span class="date">2020-2021</span>
+    					<h2>Higher Secondary School</h2>
+    					<span class="position">sarfaraz pilot high School</span>
+    					<p class="mt-4">Grade: First class distinction.</p>
+    				</div>
+				</div>
+    		</div>
+
+    		<div class="row justify-content-center mt-5">
+					<div class="col-md-6 text-center ftco-animate">
+						<p><a href="#" class="btn btn-primary py-4 px-5 download-cv">Download CV</a></p>
+					</div>
+    		</div>
+    	</div>
+    </section>
+
+   
+
+    <section class="ftco-section" id="project-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h1 class="big big-2">Projects</h1>
+            <h2 class="mb-4">Projects</h2>
+            <p>Below are the sample Data Analytics projects on SQL,Power BI,excel </p>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+			  <a href="https://github.com/syedjasim-analytics/AQI-INDAX-ANALYSIS/blob/main/README.md" class="block-20 zoom-effect" style="background-image: url('images/proj_1.png');"></a>
+			  <div class="text mt-3 float-right d-block">
+
+                <h3 class="heading"><a href="https://github.com/syedjasim-analytics/AQI-INDAX-ANALYSIS/blob/main/README.md">AQI INDAX ANALYSIS Data Analysis using power bi</a></h3>
+                <p>This AQI Index Analysis Dashboard provides real-time insights into air quality trends across Indian states, highlighting pollution levels, health impact zones, and long-term environmental patterns..</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href=https://github.com/syedjasim-analytics/Emergency-Room-Visits-Dashboard/blob/main/Emergency-Room-Visits-Dashboard class="block-20 zoom-effect" style="background-image: url('images/proj_7.png');">
+              </a>
+              <div class="text mt-3 float-right d-block">
+
+                <h3 class="heading"><a href="https://github.com/syedjasim-analytics/Emergency-Room-Visits-Dashboard/blob/main/Emergency-Room-Visits-Dashboard">Data Analysis using Python Project for Beginners</a></h3>
+                <p>An interactive Emergency Room Visits dashboard analyzing patient flow, wait times, and satisfaction metrics to support efficient healthcare operations..</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry">
+              <a href="https://github.com/syedjasim-analytics/-Coffee-Shop-Sales-Dashboard-/blob/main/PROJECT%20DETAILS." class="block-20 zoom-effect" style="background-image: url('images/proj_6.png');">
+              </a>
+              <div class="text mt-3 float-right d-block">
+
+                <h3 class="heading"><a href="https://github.com/syedjasim-analytics/-Coffee-Shop-Sales-Dashboard-/blob/main/PROJECT%20DETAILS."> ☕ Coffee Shop Sales Dashboard</a></h3>
+                <p>Visualizing coffee shop sales data through interactive analytics to uncover trends, top products, and growth opportunities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+	<!-- <br>
+		<! added justify-content-center to center align the last two projects -->
+		<!-- <div class="row d-flex justify-content-center">  
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry justify-content-end">
+				<a href="https://github.com/rishabhnmishra/sales_forecasting/tree/main" class="block-20 zoom-effect" style="background-image: url('images/proj_4.jpg');">
+				</a>
+				<div class="text mt-3 float-right d-block">
+  
+				  <h3 class="heading"><a href="https://github.com/rishabhnmishra/sales_forecasting/tree/main">Sales Forecast- Time Series Forecasting</a></h3>
+				  <p>Used multiple machine learning models to forecast sales (retail store) and performed time series analysis.</p>
+				</div>
+			  </div>
+			</div> -->
+			<div class="col-md-4 d-flex ftco-animate">
+				<div class="blog-entry justify-content-end">
+				<a href="https://github.com/syedjasim-analytics/HR-Analytics-Dashboard-Executive-Summary" class="block-20 zoom-effect" style="background-image: url(images/proj\ 8.png);">
+				</a>
+				<div class="text mt-3 float-right d-block">
+  
+				  <h3 class="heading"><a href="https://github.com/syedjasim-analytics/HR-Analytics-Dashboard-Executive-Summary">HR Analytics Dashboard – Executive Summary</a></h3>
+				  <p>A Power BI HR analytics dashboard delivering actionable insights on headcount, salary distribution, and performance metrics.</p>
+				</div>
+			  </div>
+			</div>
+		 </div> --
+	  </div>
+    </section>
+
+	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+      <div class="container">
+		<div class="row d-md-flex align-items-center">
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+              <div class="text">
+                <strong class="number" data-number="20">0</strong>
+                <span>Achievements</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+              <div class="text">
+                <strong class="number" data-number="30">0</strong>
+                <span>Projects</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+              <div class="text">
+                <strong class="number" data-number="1000">0</strong>
+                <span>Mentored Students</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+              <div class="text">
+                <strong class="number" data-number="500">0</strong>
+                <span>Cups of coffee</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	
+	  <div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
+			<!-- <div class="container"> -->
+				<div class="row justify-content-center">
+					<div class="col-md-7 ftco-animate text-center">
+						<h2>More projects on<span> Github  </span> </h2>
+						<div class="heading"> <h4> I love to solve business problems &amp; uncover hidden data stories </h4>
+						<br>
+						<p><a href="https://github.com/syedjasim-analytics" class="btn btn-primary py-3 px-5">GitHub</a></p>
+						</div>
+					</div>
+				</div>
+			<!-- </div> -->
+		</div>
+	</section>
+
+
+
+    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+      <div class="container">
+      	<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h1 class="big big-2">Contact</h1>
+            <h2 class="mb-4">Contact Me</h2>
+            <p>Below are the details to reach out to me!</p>
+          </div>
+        </div>
+
+        <div class="row d-flex contact-info mb-5">
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+          	<div class="align-self-stretch box p-4 text-center">
+          		<div class="icon d-flex align-items-center justify-content-center icon-animate">
+          			<span class="icon-map-signs"></span>
+          		</div>
+				   <h3 class="mb-4">Address</h3>
+					<p>karachi,pakistan</p>
+	          </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+          	<div class="align-self-stretch box p-4 text-center">
+          		<div class="icon d-flex align-items-center justify-content-center icon-animate">
+          			<span class="icon-phone2"></span>
+          		</div>
+          		<h3 class="mb-4">Contact Number</h3>
+	            <p><a href="tel://03177580357">92+3177580357</a></p>
+	          </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+          	<div class="align-self-stretch box p-4 text-center">
+          		<div class="icon d-flex align-items-center justify-content-center icon-animate">
+          			<span class="icon-paper-plane"></span>
+          		</div>
+          		<h3 class="mb-4">Email Address</h3>
+	            <p><a href="syedjasim76@gmail.com"> syedjasim@gmail.com</a></p>
+	          </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+          	<div class="align-self-stretch box p-4 text-center">
+          		<div class="icon d-flex align-items-center justify-content-center icon-animate">
+          			<span class="icon-globe"></span>
+          		</div>
+          		<h3 class="mb-4">Download Resume</h3>
+	            <p><a href="#">resumelink</a></p>
+	          </div>
+          </div>
+
+		  <div class="container">
+			<br>
+			<br>
+			<div class="row justify-content-center">
+				<div class="col-md-7 ftco-animate text-center">
+					<h2>Have a<span> Question?  </span> <a href="https://www.linkedin.com/in/syed-jasim-20088338a" class="btn btn-primary py-3 px-5">Click Here</a> </h2>
+				</div>
+			</div>
+				<br>
+					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
+					  <li class="ftco-animate normal-txt">Find me on  </li>
+					  <!-- <li class="ftco-animate"><a class="icon-animate" href="https://www.youtube.com/@RishabhMishraOfficial"><span class="icon-youtube"></span></a></li> -->
+					  <li class="ftco-animate"><a class="icon-animate" href="https://www.linkedin.com/in/syed-jasim-20088338a" target="_blank" rel="noopener noreferrer"><span class="icon-linkedin"></span></a></li>  
+					  <!-- <li class="ftco-animate"><a class="icon-animate" href="https://twitter.com/rishabhnmishra"><span class="icon-twitter"></span></a></li> -->
+					  <li class="ftco-animate"><a class="icon-animate" href="https://www.facebook.com/profile.php?id=61583956484580"><span class="icon-facebook"></span></a></li>
+					  <li class="ftco-animate"><a class="icon-animate" href="https://www.instagram.com/data_withharry/"><span class="icon-instagram"></span></a></li>
+					</ul>
+				<br>
+		   </div>
+   </div>
+ </section>
+
+
+ 
+	
+    <footer class="ftco-footer ftco-section">
+		<div class="container">
+		  <div class="row">
+			<div class="col-md-12 text-center">
+  
+			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+			</div>
+		  </div>
+		</div>
+	  </footer>
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  
+  <script src="js/main.js"></script>
+	<script>
+	// Animate skill progress bars when skills section scrolls into view
+	(function(){
+		const skillContainer = document.querySelector('.skill-mf');
+		if (!skillContainer) return;
+
+		const bars = skillContainer.querySelectorAll('.progress-bar');
+
+		const animateBars = () => {
+			bars.forEach(bar => {
+				const pct = bar.getAttribute('data-percentage');
+				if (!pct) return;
+				// set aria and width to animate
+				bar.setAttribute('aria-valuenow', pct);
+				// tiny timeout to ensure CSS transition picks up
+				requestAnimationFrame(() => { bar.style.width = pct + '%'; });
+			});
+		};
+
+		// Use IntersectionObserver for performant scroll-trigger
+		const observer = new IntersectionObserver((entries, obs) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					animateBars();
+					obs.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.25 });
+
+		// Observe the nearest about/skill parent
+		const target = document.querySelector('#about-section') || skillContainer;
+		observer.observe(target);
+	})();
+	</script>
+	<script>
+	// Typing effect for the hero "A Senior Data Analyst" line,
+	// card fade-in on page load, and ensure reduced-motion friendly behavior.
+	(function(){
+		// Typing
+		const typeEl = document.getElementById('type-title');
+		const text = 'A Senior Data Analyst';
+		const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (typeEl) {
+			if (prefersReduced) {
+				typeEl.textContent = text;
+			} else {
+				typeEl.classList.add('blink');
+				let i = 0;
+				const speed = 80; // ms per char
+				const typer = setInterval(() => {
+					typeEl.textContent += text.charAt(i);
+					i++;
+					if (i >= text.length) { clearInterval(typer); typeEl.classList.remove('blink'); }
+				}, speed);
+			}
+		}
+
+		// Page load fade-in sequence for sections
+		const sections = Array.from(document.querySelectorAll('section'))
+			.filter(s => s.offsetParent !== null); // visible sections only
+
+		sections.forEach(s => s.classList.add('section-fade'));
+		if (!prefersReduced) {
+			sections.forEach((s, idx) => {
+				setTimeout(() => { s.classList.add('visible'); }, 220 * idx + 150);
+			});
+		} else {
+			sections.forEach(s => s.classList.add('visible'));
+		}
+
+		// Small enhancement: resume card hover already CSS-only; nothing else needed.
+	})();
+	</script>
+    
+	<script>
+	// Trigger about section lights/zoom when it scrolls into view
+	(function(){
+		const about = document.querySelector('.about-anim');
+		if (!about) return;
+		const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (prefersReduced) { about.classList.add('in-view'); return; }
+
+		const obs = new IntersectionObserver((entries, o) => {
+			entries.forEach(e => {
+				if (e.isIntersecting) {
+					about.classList.add('in-view');
+					o.unobserve(e.target);
+				}
+			});
+		}, { threshold: 0.28 });
+
+		obs.observe(about);
+	})();
+	</script>
+
+	</body>
+</html>

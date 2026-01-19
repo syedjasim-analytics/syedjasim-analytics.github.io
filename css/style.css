@@ -9746,4 +9746,57 @@ img {
   h2 { font-size: 18px; }
   p  { font-size: 14px; }
 }
+/* =========================
+   FORCE MOBILE FIX
+========================= */
+
+/* Remove horizontal scroll */
+html, body {
+  width: 100%;
+  overflow-x: hidden !important;
+}
+
+/* Bootstrap row fix */
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Force all sections to fit screen */
+section,
+.container,
+.container-fluid {
+  max-width: 100% !important;
+  overflow-x: hidden;
+}
+
+/* Resume / cards fix */
+.resume-wrap {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Timeline / columns */
+@media (max-width: 768px) {
+
+  .col,
+  [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  /* Absolute elements reset */
+  * {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  h1 { font-size: 22px !important; }
+  h2 { font-size: 18px !important; }
+  p  { font-size: 14px !important; }
+
+}
 

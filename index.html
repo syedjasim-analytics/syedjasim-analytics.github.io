@@ -284,6 +284,49 @@
   <span class="typing-content"></span>
 </span>
 
+						
+	  <script>
+(function () {
+  const el = document.querySelector('#typing-animation .typing-content');
+  if (!el) return;
+
+  const words = ['Data Analyst', 'Power BI Developer', 'Creator'];
+  const typeSpeed = 80;
+  const deleteSpeed = 50;
+  const holdAfterType = 1200;
+  const holdAfterDelete = 400;
+
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeLoop() {
+    const currentWord = words[wordIndex];
+
+    if (!isDeleting) {
+      el.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === currentWord.length) {
+        setTimeout(() => isDeleting = true, holdAfterType);
+      }
+    } else {
+      el.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+    }
+
+    setTimeout(typeLoop, isDeleting ? deleteSpeed : typeSpeed);
+  }
+
+  typeLoop();
+})();
+</script>
+
 
                             
                         		<br>
@@ -838,48 +881,6 @@ My goal is simple: to help you understand your data and grow your business throu
 		obs.observe(about);
 	})();
 	</script>
-
-	  <script>
-(function () {
-  const el = document.querySelector('#typing-animation .typing-content');
-  if (!el) return;
-
-  const words = ['Data Analyst', 'Power BI Developer', 'Creator'];
-  const typeSpeed = 80;
-  const deleteSpeed = 50;
-  const holdAfterType = 1200;
-  const holdAfterDelete = 400;
-
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-
-  function typeLoop() {
-    const currentWord = words[wordIndex];
-
-    if (!isDeleting) {
-      el.textContent = currentWord.substring(0, charIndex + 1);
-      charIndex++;
-
-      if (charIndex === currentWord.length) {
-        setTimeout(() => isDeleting = true, holdAfterType);
-      }
-    } else {
-      el.textContent = currentWord.substring(0, charIndex - 1);
-      charIndex--;
-
-      if (charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-      }
-    }
-
-    setTimeout(typeLoop, isDeleting ? deleteSpeed : typeSpeed);
-  }
-
-  typeLoop();
-})();
-</script>
 
 
 	</body>

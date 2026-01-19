@@ -1986,3 +1986,57 @@ textarea.form-control {
     stroke-dashoffset: -136px;
   }
 }
+/* =========================
+   RESPONSIVE FIX (SCSS)
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Universal container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 15px;
+  margin: auto;
+}
+
+/* Card/grid sections */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Flex helper */
+.flex {
+  display: flex;
+  gap: 20px;
+}
+
+/* =========================
+   MOBILE BREAKPOINT
+========================= */
+@media (max-width: 768px) {
+
+  .flex {
+    flex-direction: column;
+  }
+
+  h1 { font-size: 22px; }
+  h2 { font-size: 18px; }
+  p  { font-size: 14px; }
+
+}

@@ -276,51 +276,56 @@
 		          		<span class="subheading">Hello!</span>
                             <h1 class="mb-4 mt-3">I'm <span>SYED JASIM ALI</span></h1>
 
-					<!-- Element to contain animated typing -->
-					<span id="typing-animation"><span class="typing-content"></span></span>
+				
 
-					<script>
-					// Robust typing loop (type, pause, delete, next) for the rotating words
-					(function(){
-					const el = document.querySelector('#typing-animation .typing-content');
-					if (!el) return;
-					  const words = ['data anayst', 'bussniess analyst', 'creater'];
-					  const typeSpeed = 80; // ms per char
-					  const deleteSpeed = 40;
-					  const pauseAfterType = 900;
-					  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+<span id="typing-animation">
+  <span class="typing-content"></span>
+</span>
 
-					if (prefersReduced) { el.textContent = words[0]; return; }
+						
+	  <script>
+(function () {
+  const el = document.querySelector('#typing-animation .typing-content');
+  if (!el) return;
 
-					  let wordIndex = 0, charIndex = 0, deleting = false;
+  const words = ['Data Analyst', 'Power BI Developer', 'Creator'];
+  const typeSpeed = 80;
+  const deleteSpeed = 50;
+  const holdAfterType = 1200;
+  const holdAfterDelete = 400;
 
-					  function tick(){
-					    const current = words[wordIndex];
-					    if (!deleting) {
-					      el.textContent = current.slice(0, charIndex + 1);
-					      charIndex++;
-					      if (charIndex === current.length) {
-					        deleting = true;
-					        setTimeout(tick, pauseAfterType);
-					        return;
-					      }
-					      setTimeout(tick, typeSpeed);
-					    } else {
-					      el.textContent = current.slice(0, charIndex - 1);
-					      charIndex--;
-					      if (charIndex === 0) {
-					        deleting = false;
-					        wordIndex = (wordIndex + 1) % words.length;
-					        setTimeout(tick, typeSpeed);
-					        return;
-					      }
-					      setTimeout(tick, deleteSpeed);
-					    }
-					  }
-					  // start
-					  tick();
-					})();
-					</script>
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeLoop() {
+    const currentWord = words[wordIndex];
+
+    if (!isDeleting) {
+      el.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === currentWord.length) {
+        setTimeout(() => isDeleting = true, holdAfterType);
+      }
+    } else {
+      el.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+    }
+
+    setTimeout(typeLoop, isDeleting ? deleteSpeed : typeSpeed);
+  }
+
+  typeLoop();
+})();
+</script>
+
+
                             
                         		<br>
                         		<br>
@@ -874,6 +879,7 @@ My goal is simple: to help you understand your data and grow your business throu
 		obs.observe(about);
 	})();
 	</script>
+
 
 	</body>
 </html>

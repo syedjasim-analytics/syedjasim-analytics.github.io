@@ -269,9 +269,50 @@
     fixedContentPos: false
   });
 
+// ===== Typing Animation =====
+(function () {
+  const el = document.querySelector('.typing-animation .typing-content');
+  if (!el) return;
 
+  const words = ['Data Analyst', 'Power BI Developer', 'Creator'];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
 
+  function typeLoop() {
+    const word = words[wordIndex];
 
+    if (!deleting) {
+      // typing
+      el.textContent = word.substring(0, charIndex + 1);
+      charIndex++;
 
+      if (charIndex === word.length) {
+        deleting = true;
+        setTimeout(typeLoop, 1200);
+        return;
+      }
+    } else {
+      // deleting
+      el.textContent = word.substring(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+    }
+
+    setTimeout(typeLoop, deleting ? 50 : 80);
+  }
+
+  typeLoop();
+})();
+
+	
 })(jQuery);
+
+
+
+
 
